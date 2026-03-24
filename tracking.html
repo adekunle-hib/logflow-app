@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Your Shipment | LogFlow Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0a0a0c; color: white; display: flex; justify-content: center; padding-top: 100px; }
+        .track-card { background: #16161a; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; border: 1px solid #2a2a30; text-align: center; }
+        input { width: 100%; padding: 15px; margin: 20px 0; border-radius: 8px; border: 1px solid #2a2a30; background: #0a0a0c; color: white; box-sizing: border-box; font-size: 18px; text-align: center; }
+        button { width: 100%; padding: 15px; background: #2b0dc4; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .status-box { margin-top: 30px; display: none; text-align: left; border-top: 1px solid #2a2a30; padding-top: 20px; }
+        .status-step { display: flex; align-items: center; margin-bottom: 15px; opacity: 0.4; }
+        .status-step.active { opacity: 1; color: #00ff88; }
+        .status-step i { margin-right: 15px; font-size: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="track-card">
+        <h2>TRACK SHIPMENT</h2>
+        <p style="opacity: 0.6;">Enter your LFP Tracking ID below</p>
+        <input type="text" id="track-id" placeholder="LFP-123456">
+        <button onclick="findPackage()">SEARCH NOW</button>
+
+        <div id="result-area" class="status-box">
+            <h3 id="display-id" style="color: #2b0dc4;">--</h3>
+            <p id="display-route" style="font-size: 14px; opacity: 0.8;"></p>
+            
+            <div id="step-placed" class="status-step"><i class="fas fa-check-circle"></i> Order Placed</div>
+            <div id="step-driver" class="status-step"><i class="fas fa-truck-pickup"></i> Driver Assigned</div>
+            <div id="step-transit" class="status-step"><i class="fas fa-route"></i> In Transit</div>
+            <div id="step-delivered" class="status-step"><i class="fas fa-home"></i> Delivered</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4YJx2_oXeJezHfHQHfAtj08gjQiIbtB8",
+            projectId: "logflow-ef0f6",
+            appId: "1:717467944610:web:263380524c9da07a93b9fb"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.findPackage = async function() {
+            const id = document.getElementById('track-id').value.trim();
+            if(!id) return alert("Please enter an ID");
+
+            // Look for the shipment in Firebase
+            const q = query(collection(db, "shipments"), where("tracking", "==", id));
+            const snap = await getDocs(q);
+
+            if(snap.empty) {
+                alert("Tracking ID not found. Check the number and try again.");
+                return;
+            }
+
+            // Show the result box
+            document.getElementById('result-area').style.display = "block";
+            
+            snap.forEach(doc => {
+                const data = doc.data();
+                document.getElementById('display-id').innerText = data.tracking;
+                document.getElementById('display-route').innerText = `${data.pickup} ➔ ${data.dest}`;
+
+                // Logic to highlight the status
+                updateStatusUI(data.status || "Order Placed");
+            });
+        }
+
+        function updateStatusUI(currentStatus) {
+            // Reset all steps
+            const steps = ['Order Placed', 'Driver Assigned', 'In Transit', 'Delivered'];
+            const ids = ['step-placed', 'step-driver', 'step-transit', 'step-delivered'];
+            
+            ids.forEach(id => document.getElementById(id).classList.remove('active'));
+
+            // Light up the correct steps
+            let index = steps.indexOf(currentStatus);
+            for(let i = 0; i <= index; i++) {
+                document.getElementById(ids[i]).classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

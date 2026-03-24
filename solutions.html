@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet solution</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="asset/image/logo-removebg-preview.png" alt="Logflow Logo">
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="solutions.html">Fleet Solutions</a>
+            <a href="coverage.html">Coverage</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
+    <section class="fleet-hero">
+        <div class="container">
+            <h1>Dedicated Fleet Solutions</h1>
+            <p>Don't just move goods—manage your entire supply chain with dedicated trucks, bikes, and vetted drivers on
+                a fixed contract.</p>
+            <a href="#quote" class="signup-btn">Request a Custom Quote</a>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>99.2%</h3>
+                    <p>Uptime Guaranteed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Fleet Monitoring</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4 Hours</h3>
+                    <p>Asset Replacement</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Vetted Drivers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="section-title">
+            <h2>Select Your Contract Fleet</h2>
+            <p>Flexible logistics assets designed for business scalability.</p>
+        </div>
+
+        <div class="fleet-grid">
+            <div class="fleet-card">
+                <h3>Last-Mile Dispatch</h3>
+                <p>Ideal for e-commerce, food, and document deliveries.</p>
+                <hr style="margin: 20px 0; opacity: 0.1;">
+                <ul>
+                    <li>Branded 200cc Bikes</li>
+                    <li>Rider Salary & Gear Included</li>
+                    <li>Live GPS Tracking</li>
+                </ul>
+                <a href="#quote" class="signup-btn">Inquire Now</a>
+            </div>
+
+            <div class="fleet-card">
+                <h3>Supply Vans & Trucks</h3>
+                <p>Perfect for retail restock and FMCG distribution.</p>
+                <hr style="margin: 20px 0; opacity: 0.1;">
+                <ul>
+                    <li>2-5 Ton Capacity</li>
+                    <li>Professional Drivers</li>
+                    <li>Monthly Usage Reports</li>
+                </ul>
+                <a href="#quote" class="signup-btn">Inquire Now</a>
+            </div>
+
+            <div class="fleet-card">
+                <h3>Heavy-Duty Haulage</h3>
+                <p>Built for industrial moves and interstate supply chains.</p>
+                <hr style="margin: 20px 0; opacity: 0.1;">
+                <ul>
+                    <li>10-30 Ton Trailers</li>
+                    <li>Goods-in-Transit Insurance</li>
+                    <li>24/7 Control Room Access</li>
+                </ul>
+                <a href="#quote" class="signup-btn">Inquire Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section" id="quote">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-text">
+                    <h2>Ready to Build Your Fleet?</h2>
+                    <p style="margin: 20px 0; opacity: 0.8;">Fill out the form and a fleet consultant will reach out to
+                        you within 24 hours.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;">✔️ Zero Maintenance Costs</li>
+                        <li style="margin-bottom: 15px;">✔️ Zero Driver Management Stress</li>
+                    </ul>
+                </div>
+
+                <div class="quote-form">
+                    <div id="success-message"
+                        style="display: none; text-align: center; padding: 40px; border: 2px solid var(--primary); border-radius: 10px; background: #f9f9ff;">
+                        <span style="font-size: 50px;">✅</span>
+                        <h2 style="color: var(--primary); margin-top: 15px;">We’ll be in touch!</h2>
+                        <p style="font-weight: 600; margin-top: 10px;">Our team has received your request.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">A fleet expert will call or email you shortly.</p>
+                    </div>
+
+                    <form id="fleetForm">
+                        <div class="form-group">
+                            <label>Full Name / Company Name</label>
+                            <input type="text" name="name" placeholder="e.g. Logflow Retail Ltd" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="name@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="e.g. 08012345678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Industry</label>
+                            <select name="industry">
+                                <option>E-commerce</option>
+                                <option>Manufacturing</option>
+                                <option>FMCG / Retail</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fleet Type Needed</label>
+                            <select name="fleet_type">
+                                <option>Dispatch Bikes</option>
+                                <option>Light Trucks (2-5 Ton)</option>
+                                <option>Heavy Duty (10-30 Ton)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Estimated Monthly Volume</label>
+                            <input type="text" name="volume" placeholder="Number of deliveries or trips" required>
+                        </div>
+
+                        <button type="submit" class="signup-btn"
+                            style="width: 100%; border: none; cursor: pointer; padding: 15px; font-size: 1rem;">
+                            Get My Custom Proposal
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="asset/image/logo-removebg-preview.png" alt="Logflow Logo">
+                <p>Smart logistics. Fast. Reliable. Scalable.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@logflow.com</p>
+                <p>Phone: +234 800 123 4567</p>
+                <p>Address: Lagos, Nigeria</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Logflow. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('fleetForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Stop the page jump
+
+            const form = this;
+            const btn = form.querySelector('button');
+            const successMsg = document.getElementById('success-message');
+
+            // 1. Activate the button state
+            btn.innerText = "Processing...";
+            btn.style.opacity = "0.7";
+            btn.disabled = true;
+
+            // 2. This is the "Bridge" - It waits 1.5 seconds to feel professional
+            setTimeout(() => {
+                // Hide the form
+                form.style.display = "none";
+                // Show the success message
+                successMsg.style.display = "block";
+                // Scroll smoothly so they see the "Done" message
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1500);
+
+            // NOTE: When you are ready for real emails, add the 'fetch' code back 
+            // here using your Formspree ID.
+        });
+    </script>
+</body>
+
+</html>
